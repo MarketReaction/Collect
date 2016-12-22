@@ -6,7 +6,6 @@ import uk.co.jassoft.markets.datamodel.sources.SourceBuilder;
 import uk.co.jassoft.markets.datamodel.sources.SourceUrl;
 import uk.co.jassoft.markets.datamodel.story.StoryBuilder;
 import uk.co.jassoft.markets.datamodel.story.date.DateFormat;
-import uk.co.jassoft.markets.repository.DateFormatRepository;
 import uk.co.jassoft.markets.repository.SourceRepository;
 import uk.co.jassoft.markets.repository.StoryRepository;
 import uk.co.jassoft.network.Network;
@@ -50,9 +49,6 @@ public class StoryListenerTest extends BaseRepositoryTest {
     @Autowired
     private SourceRepository sourceRepository;
 
-    @Autowired
-    private DateFormatRepository dateFormatRepository;
-
     @Mock
     private Network network;
 
@@ -69,7 +65,6 @@ public class StoryListenerTest extends BaseRepositoryTest {
         MockitoAnnotations.initMocks(this);
 
         storyRepository.deleteAll();
-        dateFormatRepository.deleteAll();
 
         source = sourceRepository.save(SourceBuilder.aSource()
                 .withDisabled(false)
@@ -141,8 +136,6 @@ public class StoryListenerTest extends BaseRepositoryTest {
                 .createStory())
                 .getId();
 
-        dateFormatRepository.save(new DateFormat("yyyy-MM-dd'T'HH:mm:ssZ"));
-
         String html = IOUtils.toString(this.getClass().getResourceAsStream("/testWebPage.html"));
 
         html = html.replace("2016-03-17T12:44:53+0000", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().minusDays(2).toDate()) );
@@ -166,8 +159,6 @@ public class StoryListenerTest extends BaseRepositoryTest {
                 .createStory())
                 .getId();
 
-        dateFormatRepository.save(new DateFormat("yyyy-MM-dd'T'HH:mm:ssZ"));
-
         String html = IOUtils.toString(this.getClass().getResourceAsStream("/testWebPage.html"));
 
         html = html.replace("2016-03-17T12:44:53+0000", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().plusDays(2).toDate()) );
@@ -190,8 +181,6 @@ public class StoryListenerTest extends BaseRepositoryTest {
                 .setParentSource(source)
                 .createStory())
                 .getId();
-
-        dateFormatRepository.save(new DateFormat("yyyy-MM-dd'T'HH:mm:ssZ"));
 
         String html = IOUtils.toString(this.getClass().getResourceAsStream("/testWebPage.html"));
 
