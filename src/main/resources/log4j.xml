@@ -7,6 +7,9 @@
             <param name="ConversionPattern" value="%-5p %d{dd MMM yyyy HH:mm:ss,SSS} %c{1} - %m%n"/>
         </layout>
     </appender>
+    <logger name="com.joestelmach.natty">
+        <level value="error"/>
+    </logger>
     <root>
         <priority value="info"></priority>
         <appender-ref ref="console"/>
