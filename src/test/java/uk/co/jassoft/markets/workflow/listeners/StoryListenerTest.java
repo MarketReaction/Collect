@@ -138,7 +138,7 @@ public class StoryListenerTest extends BaseRepositoryTest {
 
         String html = IOUtils.toString(this.getClass().getResourceAsStream("/testWebPage.html"));
 
-        html = html.replace("2016-03-17T12:44:53+0000", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().minusDays(2).toDate()) );
+        html = html.replace("Tuesday, 17 Jul 2012 | 10:00 AM ET", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().minusDays(2).toDate()) );
 
         when(network.httpRequest(eq("http://test.com"), eq("GET"), eq(false))).thenReturn(html);
 
@@ -161,7 +161,7 @@ public class StoryListenerTest extends BaseRepositoryTest {
 
         String html = IOUtils.toString(this.getClass().getResourceAsStream("/testWebPage.html"));
 
-        html = html.replace("2016-03-17T12:44:53+0000", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().plusDays(2).toDate()) );
+        html = html.replace("Tuesday, 17 Jul 2012 | 10:00 AM ET", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(new DateTime().plusDays(2).toDate()) );
 
         when(network.httpRequest(eq("http://test.com"), eq("GET"), eq(false))).thenReturn(html);
 
@@ -187,7 +187,7 @@ public class StoryListenerTest extends BaseRepositoryTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
         Date publishedDate = new Date();
-        html = html.replace("2016-03-17T12:44:53+0000", sdf.format(publishedDate) );
+        html = html.replace("Tuesday, 17 Jul 2012 | 10:00 AM ET", sdf.format(publishedDate) );
 
         when(network.httpRequest(eq("http://test.com"), eq("GET"), eq(false))).thenReturn(html);
 
